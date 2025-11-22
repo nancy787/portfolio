@@ -5,9 +5,9 @@ export default function Layouts() {
    return (
     <>
          <Header/>
-         <main>
-            <Outlet/>
-         </main>
+            <main style={{ paddingBottom: '120px' }}>
+               <Outlet/>
+            </main>
         <Footer/>
     </>
    )
