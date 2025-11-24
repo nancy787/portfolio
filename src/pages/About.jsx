@@ -208,7 +208,7 @@ const About = () => {
   };
 
   return (
-    <div
+    <div id="about"
       style={{
         backgroundColor: '#fafafa',
         minHeight: '100vh',

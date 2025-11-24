@@ -25,7 +25,7 @@ const Contact = () => {
   };
 
   return (
-    <div
+    <div id="contact"
       style={{
         backgroundColor: '#e8eaf6',
         minHeight: '100vh',

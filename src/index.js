@@ -7,6 +7,10 @@ import Logo from "./component/Logo";
 import SocialLinks from "./pages/SocialLinks";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
+import WorkExperience from "./pages/WorkExperience";
+import Projects from "./pages/Projects";
+import ProjectDetails from "./pages/ProjectDetails";
+import Main from "./pages/Main";
 
 export {
     Header,
@@ -17,5 +21,9 @@ export {
     Logo,
     SocialLinks,
     About,
-    Contact
+    Contact,
+    WorkExperience,
+    Projects,
+    ProjectDetails,
+    Main
 }

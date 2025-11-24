@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import {SocialLinks, About, Contact} from "../index";
+import { SocialLinks } from "../index";
+import ProfileImg from "../assets/profile.png";
 
 const Home = () => {
   const [hoveredHire, setHoveredHire] = useState(false);
@@ -7,336 +8,217 @@ const Home = () => {
 
   return (
     <>
-    <div
-      style={{
-        minHeight: '100vh',
-        background: 'linear-gradient(135deg, #f8fafc 0%, #e0f2fe 100%)',
-        position: 'relative',
-        overflow: 'hidden',
-        display: 'flex',
-        alignItems: 'center',
-        padding: '4rem 2rem',
-        width: '100%',
-      }}
-    >
-      <div style={{ maxWidth: '1400px', margin: '0 auto', width: '100%' }}>
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '4rem', alignItems: 'center' }}>
-          {/* Left Content */}
-          <div
-            style={{
-              animation: 'fadeIn 0.8s ease-out',
-            }}
-          >
-            <style>
-              {`
-                @keyframes fadeIn {
-                  from { opacity: 0; transform: translateX(-30px); }
-                  to { opacity: 1; transform: translateX(0); }
-                }
-              `}
-            </style>
+      <div
+        id="home"
+        style={{
+          minHeight: "100vh",
+          background: "linear-gradient(135deg, #f8fafc 0%, #e0f2fe 100%)",
+          display: "flex",
+          alignItems: "center",
+          padding: "4rem 2rem",
+        }}
+      >
+        <div style={{ maxWidth: "1400px", margin: "0 auto", width: "100%" }}>
+          <div className="home-grid">
 
-            {/* Name Badge */}
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '2rem', flexWrap: 'wrap' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                <span style={{ 
-                  fontSize: '2rem', 
-                  fontWeight: 600, 
-                  background: 'linear-gradient(90deg, #6b7280, #3b82f6, #6b7280)',
-                  backgroundSize: '200% auto',
-                  WebkitBackgroundClip: 'text',
-                  WebkitTextFillColor: 'transparent',
-                  backgroundClip: 'text',
-                  animation: 'textGradient 3s ease infinite',
-                }}>
-                  Hello, I'm
-                </span>
-                <style>
-                  {`
-                    @keyframes textGradient {
-                      0%, 100% { background-position: 0% center; }
-                      50% { background-position: 100% center; }
-                    }
-                  `}
-                </style>
-                <div
-                  style={{
-                    position: 'relative',
-                    background: 'linear-gradient(135deg, #3b82f6 0%, #2563eb 100%)',
-                    padding: '0.5rem 1.5rem',
-                    borderRadius: '12px',
-                    cursor: 'pointer',
-                    transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
-                    boxShadow: '0 4px 15px rgba(59, 130, 246, 0.4)',
-                    overflow: 'hidden',
-                  }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.transform = 'translateY(-2px) scale(1.02)';
-                    e.currentTarget.style.boxShadow = '0 8px 25px rgba(59, 130, 246, 0.5)';
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.transform = 'translateY(0) scale(1)';
-                    e.currentTarget.style.boxShadow = '0 4px 15px rgba(59, 130, 246, 0.4)';
-                  }}
-                >
-                  {/* Shine effect */}
-                  <div
-                    style={{
-                      position: 'absolute',
-                      top: 0,
-                      left: '-100%',
-                      width: '100%',
-                      height: '100%',
-                      background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent)',
-                      animation: 'shine 3s infinite',
-                    }}
-                  />
-                  <style>
-                    {`
-                      @keyframes shine {
-                        0%, 100% { left: -100%; }
-                        50% { left: 100%; }
-                      }
-                    `}
-                  </style>
-                  <span style={{ 
-                    fontSize: '1.5rem', 
-                    fontWeight: 700, 
-                    color: 'white',
-                    position: 'relative',
-                    zIndex: 1,
-                    letterSpacing: '0.5px',
-                  }}>
-                    Kenzy
-                  </span>
-                  {/* Decorative dot */}
-                  <span style={{
-                    position: 'absolute',
-                    top: '8px',
-                    right: '8px',
-                    width: '8px',
-                    height: '8px',
-                    backgroundColor: '#60a5fa',
-                    borderRadius: '50%',
-                    animation: 'pulse 2s infinite',
-                  }} />
-                  <style>
-                    {`
-                      @keyframes pulse {
-                        0%, 100% { opacity: 1; transform: scale(1); }
-                        50% { opacity: 0.5; transform: scale(1.2); }
-                      }
-                    `}
-                  </style>
+            {/* LEFT */}
+            <div className="left-content">
+              <div className="hello-row">
+                <span className="hello-text">Hello, I'm</span>
+                <div className="name-badge">
+                  <span className="name_title">Nancy</span>
                 </div>
-                <span style={{ fontSize: '1.5rem', animation: 'wave 2s ease-in-out infinite', display: 'inline-block', transformOrigin: '70% 70%' }}>👋</span>
-              </div>
-            </div>
-            <style>
-              {`
-                @keyframes wave {
-                  0%, 100% { transform: rotate(0deg); }
-                  10%, 30% { transform: rotate(14deg); }
-                  20% { transform: rotate(-8deg); }
-                  40%, 60% { transform: rotate(14deg); }
-                  50% { transform: rotate(-8deg); }
-                  70% { transform: rotate(0deg); }
-                }
-              `}
-            </style>
-
-            {/* Main Title */}
-            <h1
-              style={{
-                fontSize: 'clamp(2.5rem, 5vw, 4.5rem)',
-                fontWeight: 700,
-                color: '#111827',
-                lineHeight: 1.2,
-                marginBottom: '1rem',
-              }}
-            >
-              Nancy Kumari
-            </h1>
-
-            {/* Subtitle */}
-            <div style={{ marginBottom: '2rem' }}>
-              <h2
-                style={{
-                  fontSize: '1.5rem',
-                  color: '#6b7280',
-                  fontWeight: 500,
-                  marginBottom: '1rem',
-                }}
-              >
-                Software Developer | Backend Engineer
-              </h2>
-              
-              {/* Experience Badge */}
-              <div style={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '0.75rem',
-                background: 'linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%)',
-                padding: '0.75rem 1.5rem',
-                borderRadius: '50px',
-                border: '2px solid #3b82f6',
-                animation: 'float 3s ease-in-out infinite',
-              }}>
-                <span style={{ fontSize: '1.5rem' }}>🚀</span>
-                <span style={{ 
-                  fontSize: '1.1rem', 
-                  fontWeight: 700, 
-                  background: 'linear-gradient(135deg, #3b82f6 0%, #2563eb 100%)',
-                  WebkitBackgroundClip: 'text',
-                  WebkitTextFillColor: 'transparent',
-                  backgroundClip: 'text',
-                }}>
-                  3+ Years Experience
-                </span>
-              </div>
-              <style>
-                {`
-                  @keyframes float {
-                    0%, 100% { transform: translateY(0px); }
-                    50% { transform: translateY(-10px); }
-                  }
-                `}
-              </style>
-            </div>
-
-            {/* CTA Buttons */}
-            <div style={{ display: 'flex', gap: '1rem', marginBottom: '2rem', flexWrap: 'wrap' }}>
-              <button
-                onMouseEnter={() => setHoveredHire(true)}
-                onMouseLeave={() => setHoveredHire(false)}
-                style={{
-                  backgroundColor: '#3b82f6',
-                  color: 'white',
-                  padding: '0.75rem 2rem',
-                  borderRadius: '50px',
-                  fontSize: '1rem',
-                  fontWeight: 600,
-                  border: 'none',
-                  cursor: 'pointer',
-                  boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
-                  transition: 'all 0.3s ease',
-                  transform: hoveredHire ? 'scale(1.1) translateY(-3px)' : 'scale(1)',
-                }}
-              >
-                Hire Me Now
-              </button>
-
-              <button
-                onMouseEnter={() => setHoveredArrow(true)}
-                onMouseLeave={() => setHoveredArrow(false)}
-                style={{
-                  width: '56px',
-                  height: '56px',
-                  backgroundColor: '#3b82f6',
-                  color: 'white',
-                  borderRadius: '50%',
-                  border: 'none',
-                  cursor: 'pointer',
-                  fontSize: '1.5rem',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
-                  transition: 'all 0.3s ease',
-                  transform: hoveredArrow ? 'scale(1.1) rotate(45deg)' : 'scale(1)',
-                }}
-              >
-                ↗️
-              </button>
-            </div>
-
-            {/* Social Links */}
-            <SocialLinks/>
-          </div>
-
-          {/* Right Content - Profile Image */}
-          <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '500px' }}>
-            <div
-              style={{
-                position: 'relative',
-                cursor: 'pointer',
-                width: '100%',
-                maxWidth: '500px',
-              }}
-            >
-              {/* Decorative circle with rotation */}
-              <div
-                style={{
-                  position: 'absolute',
-                  width: '100%',
-                  maxWidth: '450px',
-                  height: '450px',
-                  background: 'linear-gradient(135deg, #dbeafe 0%, #e9d5ff 100%)',
-                  borderRadius: '50%',
-                  top: '-40px',
-                  left: '50%',
-                  transform: 'translateX(-50%)',
-                  transition: 'transform 0.5s ease',
-                  animation: 'rotate 20s linear infinite',
-                  zIndex: 0,
-                }}
-              />
-              <style>
-                {`
-                  @keyframes rotate {
-                    from { transform: translateX(-50%) rotate(0deg); }
-                    to { transform: translateX(-50%) rotate(360deg); }
-                  }
-                `}
-              </style>
-
-              {/* Profile placeholder */}
-              <div
-                style={{
-                  width: '100%',
-                  maxWidth: '350px',
-                  height: '350px',
-                  margin: '0 auto',
-                  background: 'linear-gradient(135deg, #e5e7eb 0%, #d1d5db 100%)',
-                  borderRadius: '50%',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  fontSize: '5rem',
-                  boxShadow: '0 10px 30px rgba(0, 0, 0, 0.15)',
-                  transition: 'transform 0.5s ease',
-                  position: 'relative',
-                  zIndex: 1,
-                }}
-              >
-                👤
+                <span className="wave">👋</span>
               </div>
 
-              {/* Floating badge */}
-              <div
-                style={{
-                  position: 'absolute',
-                  top: '24px',
-                  left: 'calc(50% - 200px)',
-                  backgroundColor: 'white',
-                  padding: '0.5rem 1rem',
-                  borderRadius: '50px',
-                  boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
-                  fontSize: '1.8rem',
-                  transition: 'transform 0.3s ease',
-                  zIndex: 2,
-                }}
-              >
-                💻
+              <h1 className="main-title">Nancy Kumari</h1>
+              <h2 className="sub-title">Software Developer | Backend Engineer</h2>
+
+              <div className="exp-badge">
+                <span>🚀</span>
+                <span className="exp-text">3+ Years Experience</span>
+              </div>
+
+              <div className="btn-row">
+                <button
+                  onMouseEnter={() => setHoveredHire(true)}
+                  onMouseLeave={() => setHoveredHire(false)}
+                  className="hire-btn"
+                  style={{ transform: hoveredHire ? "scale(1.1)" : "scale(1)" }}
+                >
+                  Hire Me Now
+                </button>
+                <button
+                  onMouseEnter={() => setHoveredArrow(true)}
+                  onMouseLeave={() => setHoveredArrow(false)}
+                  className="arrow-btn"
+                  style={{ transform: hoveredArrow ? "scale(1.1) rotate(45deg)" : "scale(1)" }}
+                >
+                  ↗️
+                </button>
+              </div>
+
+              <SocialLinks />
+            </div>
+
+            {/* RIGHT */}
+            <div className="right-content">
+              <div className="circle"></div>
+              <div className="profile-wrapper">
+                <img src={ProfileImg} alt="Profile" className="profile-img" />
               </div>
             </div>
+
           </div>
         </div>
       </div>
-    </div>
 
-    <About/>
-    <Contact/>
+      <style>
+        {`
+          .home-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+          }
+
+          .left-content {
+            animation: fadeIn 0.8s ease-out;
+          }
+
+          .hello-row {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            flex-wrap: wrap;
+          }
+
+          .hello-text {
+            font-size: 2rem;
+            font-weight: 600;
+            background: linear-gradient(90deg, #6b7280, #3b82f6, #6b7280);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            color: transparent;
+            animation: textGradient 3s infinite;
+          }
+
+          .name-badge {
+            background: linear-gradient(135deg, #3b82f6, #2563eb);
+            padding: 0.5rem 1.5rem;
+            border-radius: 12px;
+            color: white;
+            font-weight: 700;
+          }
+
+          .wave { font-size: 1.7rem; animation: wave 2s infinite; }
+          .main-title { font-size: clamp(2.5rem, 6vw, 4.5rem); font-weight: 700; color: #111827; margin-top: 1rem; }
+          .sub-title { font-size: 1.4rem; color: #6b7280; font-weight: 500; margin-top: 0.5rem; }
+
+          .exp-badge {
+            margin-top: 1rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.7rem;
+            border: 2px solid #3b82f6;
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            background: #eff6ff;
+          }
+
+          .btn-row {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+          }
+
+          .hire-btn {
+            background: #3b82f6;
+            color: white;
+            padding: 0.75rem 2rem;
+            border-radius: 50px;
+            font-size: 1rem;
+            border: none;
+            cursor: pointer;
+            transition: 0.3s ease;
+          }
+
+          .arrow-btn {
+            width: 56px;
+            height: 56px;
+            background: #3b82f6;
+            color: white;
+            border-radius: 50%;
+            border: none;
+            font-size: 1.4rem;
+            cursor: pointer;
+            transition: 0.3s ease;
+          }
+
+          /* RIGHT */
+          .right-content {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+          }
+
+          .circle {
+            width: 420px;
+            height: 420px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #dbeafe, #e9d5ff);
+            position: absolute;
+            animation: rotate 20s linear infinite;
+          }
+
+          .profile-wrapper {
+            width: 330px;
+            height: 330px;
+            border-radius: 50%;
+            overflow: hidden;
+            z-index: 10;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+          }
+
+          .profile-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+          }
+
+          /* RESPONSIVE */
+          @media (max-width: 1024px) {
+            .home-grid { grid-template-columns: 1fr; text-align: center; }
+            .btn-row { justify-content: center; }
+            .circle { width: 360px; height: 360px; }
+            .profile-wrapper { width: 260px; height: 260px; }
+          }
+
+          @media (max-width: 768px) {
+            .circle { width: 280px; height: 280px; }
+            .profile-wrapper { width: 220px; height: 220px; }
+          }
+
+          @media (max-width: 480px) {
+            .main-title { font-size: 2.2rem; }
+            .hello-text { font-size: 1.4rem; }
+          }
+
+          /* Animations */
+          @keyframes rotate { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+          @keyframes wave {
+            0%,100%{transform:rotate(0deg);}
+            10%,30%{transform:rotate(14deg);}
+            20%,50%{transform:rotate(-8deg);}
+            40%,60%{transform:rotate(14deg);}
+            70%{transform:rotate(0deg);}
+          }
+        `}
+      </style>
     </>
   );
 };
