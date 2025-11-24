@@ -19,6 +19,7 @@ import { Logo } from "../index.js";
 const navItems = ['Home', 'About', 'Projects', 'Contact'];
 
 const Header = () => {
+  const [activeItem, setActiveItem] = useState(navItems[0]); // default active
   const [mobileOpen, setMobileOpen] = useState(false);
 
   // Toggle drawer (hamburger)
@@ -40,15 +41,25 @@ const Header = () => {
     <Box sx={{ width: 250, textAlign: 'center', mt: 3 }}>
       <Logo />
 
-      <List>
-        {navItems.map((item) => (
-          <ListItem key={item} disablePadding>
-            <ListItemButton onClick={() => scrollToSection(item)}>
-              <ListItemText primary={item} />
-            </ListItemButton>
-          </ListItem>
-        ))}
-      </List>
+      <List sx={{ display: { xs: "none", md: "flex" }, gap: 3 }}>
+  {navItems.map((item) => (
+    <ListItem key={item} disablePadding>
+      <ListItemButton
+        onClick={() => {
+          scrollToSection(item);
+          setActiveItem(item); // set active on click
+        }}
+        sx={{
+          textAlign: "center",
+          color: activeItem === item ? "#1976d2" : "#333", // highlight active
+          fontWeight: activeItem === item ? "bold" : "normal",
+        }}
+      >
+        <ListItemText primary={item} />
+      </ListItemButton>
+    </ListItem>
+  ))}
+</List>
 
       <Button
         variant="contained"

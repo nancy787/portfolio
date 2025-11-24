@@ -96,6 +96,8 @@ const About = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
   const [hoveredIndex, setHoveredIndex] = useState(null);
+  // New State for Mobile View (e.g., screen width <= 600px)
+  const [isMobile, setIsMobile] = useState(false); 
 
   const skills = [
     {
@@ -115,7 +117,7 @@ const About = () => {
     {
       title: 'ReactJS',
       description: 'Creating dynamic user interfaces with hooks, context API, and component architecture.',
-      percentage: 88,
+      percentage: 80,
       icon: <WebIcon />,
       color: '#61DAFB',
     },
@@ -129,7 +131,7 @@ const About = () => {
     {
       title: 'Laravel',
       description: 'Developing elegant web applications using PHP framework with MVC architecture and Eloquent ORM.',
-      percentage: 82,
+      percentage: 85,
       icon: <LaravelIcon />,
       color: '#FF2D20',
     },
@@ -162,6 +164,13 @@ const About = () => {
       color: '#4285F4',
     },
     {
+      title: 'Tailwind CSS',
+      description: 'Designing highly customizable and responsive UIs using utility-first CSS framework.',
+      percentage: 88,
+      icon: <PaletteIcon />, // make sure you import or create this icon
+      color: '#06B6D4',
+    },
+    {
       title: 'Bootstrap',
       description: 'Rapidly building responsive and mobile-first websites with popular CSS framework.',
       percentage: 92,
@@ -186,16 +195,30 @@ const About = () => {
 
   const itemsPerView = 4;
   const maxIndex = Math.max(0, skills.length - itemsPerView);
+  const mobileBreakpoint = 768; // Define a breakpoint for mobile/tablet view
 
+  // Effect to handle window resize for mobile detection
   useEffect(() => {
-    if (!isAutoPlaying) return;
-    
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= mobileBreakpoint);
+    };
+
+    handleResize(); // Set initial state
+    window.addEventListener('resize', handleResize);
+
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  // Carousel autoplay effect (only runs if not mobile)
+  useEffect(() => {
+    if (isMobile || !isAutoPlaying) return;
+
     const interval = setInterval(() => {
       setCurrentIndex((prev) => (prev >= maxIndex ? 0 : prev + 1));
     }, 3000);
 
     return () => clearInterval(interval);
-  }, [isAutoPlaying, maxIndex]);
+  }, [isAutoPlaying, maxIndex, isMobile]);
 
   const handlePrev = () => {
     setIsAutoPlaying(false);
@@ -206,6 +229,45 @@ const About = () => {
     setIsAutoPlaying(false);
     setCurrentIndex((prev) => (prev >= maxIndex ? 0 : prev + 1));
   };
+
+  // Determine which skills to display based on view type
+  const skillsToDisplay = isMobile ? skills : skills.slice(0); // On mobile, show all, otherwise show all for carousel track
+
+  // Card list style change for mobile
+  const cardListStyle = isMobile
+    ? {
+        display: 'grid', // Use grid for simple stacking
+        gridTemplateColumns: '1fr', // Single column
+        gap: '24px',
+        padding: '8px 0',
+      }
+    : {
+        display: 'flex',
+        gap: '24px',
+        transform: `translateX(-${currentIndex * (100 / itemsPerView + 2)}%)`,
+        transition: 'transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)',
+        padding: '8px 0',
+      };
+
+  // Card style change for mobile
+  const cardStyle = (index) => ({
+    // Base styles
+    backgroundColor: '#ffffff',
+    borderRadius: '8px',
+    padding: '32px 24px',
+    boxShadow:
+      hoveredIndex === index
+        ? '0 8px 16px rgba(0,0,0,0.15)'
+        : '0 2px 4px rgba(0,0,0,0.1)',
+    transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+    transform: hoveredIndex === index ? 'translateY(-8px)' : 'translateY(0)',
+    cursor: 'pointer',
+    position: 'relative',
+    overflow: 'hidden',
+    // View-specific styles
+    minWidth: isMobile ? 'auto' : `calc(${100 / itemsPerView}% - 18px)`,
+    width: isMobile ? '100%' : `calc(${100 / itemsPerView}% - 18px)`,
+  });
 
   return (
     <div id="about"
@@ -219,7 +281,8 @@ const About = () => {
       <div style={{ maxWidth: '1280px', margin: '0 auto' }}>
         {/* Header Section */}
         <div style={{ textAlign: 'center', marginBottom: '72px' }}>
-          {/* Overline */}
+          {/* Overline and Main Heading are the same... */}
+          {/* ... (Header code remains unchanged) ... */}
           <div
             style={{
               display: 'inline-flex',
@@ -279,125 +342,109 @@ const About = () => {
               fontWeight: 400,
             }}
           >
-            Hello there, I'm Dominion, a passionate Software Developer and Backend Engineer with a
-            deep enthusiasm for programming, problem-solving, and building meaningful digital solutions.
-            I thrive in environments that challenge me to think critically and push boundaries. With a strong
-            backend focus, I enjoy designing efficient APIs, managing databases, and working with
-            scalable infrastructure. I'm also a strong communicator, collaborator, and continuous learner
-            who values innovation, clean architecture, and delivering real-world impact through code.
+            Hello there, I'm Nancy! I love building software that makes a difference. 
+            As a Backend Engineer and Software Developer, I enjoy solving challenging problems, 
+            creating reliable APIs, and working with databases and scalable systems. 
+            I thrive on opportunities that push me to think creatively and improve my skills. 
+            Beyond coding, I value teamwork, clear communication, 
+            and continuously learning new technologies. My goal is to write clean,
+            efficient code that delivers real impact.
           </p>
         </div>
 
         {/* Carousel Container */}
         <div style={{ position: 'relative' }}>
-          {/* Navigation Buttons */}
-          <button
-            onClick={handlePrev}
-            style={{
-              position: 'absolute',
-              left: '-20px',
-              top: '50%',
-              transform: 'translateY(-50%)',
-              width: '48px',
-              height: '48px',
-              borderRadius: '50%',
-              backgroundColor: '#ffffff',
-              border: 'none',
-              boxShadow: '0 2px 8px rgba(0,0,0,0.15)',
-              cursor: 'pointer',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              zIndex: 10,
-              transition: 'all 0.3s ease',
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.backgroundColor = '#5C6BC0';
-              e.currentTarget.style.color = '#ffffff';
-              e.currentTarget.style.transform = 'translateY(-50%) scale(1.1)';
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.backgroundColor = '#ffffff';
-              e.currentTarget.style.color = '#000000';
-              e.currentTarget.style.transform = 'translateY(-50%) scale(1)';
-            }}
-          >
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-              <path d="M15 18L9 12L15 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
-          </button>
+          {/* Navigation Buttons (Conditional Rendering) */}
+          {!isMobile && (
+            <>
+              <button
+                onClick={handlePrev}
+                style={{
+                  position: 'absolute',
+                  left: '-20px',
+                  top: '50%',
+                  transform: 'translateY(-50%)',
+                  width: '48px',
+                  height: '48px',
+                  borderRadius: '50%',
+                  backgroundColor: '#ffffff',
+                  border: 'none',
+                  boxShadow: '0 2px 8px rgba(0,0,0,0.15)',
+                  cursor: 'pointer',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  zIndex: 10,
+                  transition: 'all 0.3s ease',
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.backgroundColor = '#5C6BC0';
+                  e.currentTarget.style.color = '#ffffff';
+                  e.currentTarget.style.transform = 'translateY(-50%) scale(1.1)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.backgroundColor = '#ffffff';
+                  e.currentTarget.style.color = '#000000';
+                  e.currentTarget.style.transform = 'translateY(-50%) scale(1)';
+                }}
+              >
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                  <path d="M15 18L9 12L15 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              </button>
 
-          <button
-            onClick={handleNext}
-            style={{
-              position: 'absolute',
-              right: '-20px',
-              top: '50%',
-              transform: 'translateY(-50%)',
-              width: '48px',
-              height: '48px',
-              borderRadius: '50%',
-              backgroundColor: '#ffffff',
-              border: 'none',
-              boxShadow: '0 2px 8px rgba(0,0,0,0.15)',
-              cursor: 'pointer',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              zIndex: 10,
-              transition: 'all 0.3s ease',
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.backgroundColor = '#5C6BC0';
-              e.currentTarget.style.color = '#ffffff';
-              e.currentTarget.style.transform = 'translateY(-50%) scale(1.1)';
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.backgroundColor = '#ffffff';
-              e.currentTarget.style.color = '#000000';
-              e.currentTarget.style.transform = 'translateY(-50%) scale(1)';
-            }}
-          >
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-              <path d="M9 18L15 12L9 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
-          </button>
+              <button
+                onClick={handleNext}
+                style={{
+                  position: 'absolute',
+                  right: '-20px',
+                  top: '50%',
+                  transform: 'translateY(-50%)',
+                  width: '48px',
+                  height: '48px',
+                  borderRadius: '50%',
+                  backgroundColor: '#ffffff',
+                  border: 'none',
+                  boxShadow: '0 2px 8px rgba(0,0,0,0.15)',
+                  cursor: 'pointer',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  zIndex: 10,
+                  transition: 'all 0.3s ease',
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.backgroundColor = '#5C6BC0';
+                  e.currentTarget.style.color = '#ffffff';
+                  e.currentTarget.style.transform = 'translateY(-50%) scale(1.1)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.backgroundColor = '#ffffff';
+                  e.currentTarget.style.color = '#000000';
+                  e.currentTarget.style.transform = 'translateY(-50%) scale(1)';
+                }}
+              >
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                  <path d="M9 18L15 12L9 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              </button>
+            </>
+          )}
 
-          {/* Carousel Track */}
-          <div style={{ overflow: 'hidden', padding: '8px 0' }}>
-            <div
-              style={{
-                display: 'flex',
-                gap: '24px',
-                transform: `translateX(-${currentIndex * (100 / itemsPerView + 2)}%)`,
-                transition: 'transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)',
-              }}
-            >
-              {skills.map((skill, index) => (
+          {/* Carousel Track / Card Stack */}
+          <div style={{ overflow: isMobile ? 'visible' : 'hidden' }}>
+            <div style={cardListStyle}>
+              {skillsToDisplay.map((skill, index) => (
                 <div
                   key={index}
-                  style={{
-                    minWidth: `calc(${100 / itemsPerView}% - 18px)`,
-                    backgroundColor: '#ffffff',
-                    borderRadius: '8px',
-                    padding: '32px 24px',
-                    boxShadow:
-                      hoveredIndex === index
-                        ? '0 8px 16px rgba(0,0,0,0.15)'
-                        : '0 2px 4px rgba(0,0,0,0.1)',
-                    transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
-                    transform: hoveredIndex === index ? 'translateY(-8px)' : 'translateY(0)',
-                    cursor: 'pointer',
-                    position: 'relative',
-                    overflow: 'hidden',
-                  }}
+                  style={cardStyle(index)}
                   onMouseEnter={() => {
                     setHoveredIndex(index);
-                    setIsAutoPlaying(false);
+                    if (!isMobile) setIsAutoPlaying(false);
                   }}
                   onMouseLeave={() => {
                     setHoveredIndex(null);
-                    setIsAutoPlaying(true);
+                    if (!isMobile) setIsAutoPlaying(true);
                   }}
                 >
                   {/* Top colored border */}
@@ -520,34 +567,36 @@ const About = () => {
             </div>
           </div>
 
-          {/* Carousel Indicators */}
-          <div
-            style={{
-              display: 'flex',
-              justifyContent: 'center',
-              gap: '8px',
-              marginTop: '32px',
-            }}
-          >
-            {Array.from({ length: maxIndex + 1 }).map((_, index) => (
-              <button
-                key={index}
-                onClick={() => {
-                  setCurrentIndex(index);
-                  setIsAutoPlaying(false);
-                }}
-                style={{
-                  width: currentIndex === index ? '32px' : '8px',
-                  height: '8px',
-                  borderRadius: '4px',
-                  backgroundColor: currentIndex === index ? '#5C6BC0' : '#e0e0e0',
-                  border: 'none',
-                  cursor: 'pointer',
-                  transition: 'all 0.3s ease',
-                }}
-              />
-            ))}
-          </div>
+          {/* Carousel Indicators (Conditional Rendering) */}
+          {!isMobile && (
+            <div
+              style={{
+                display: 'flex',
+                justifyContent: 'center',
+                gap: '8px',
+                marginTop: '32px',
+              }}
+            >
+              {Array.from({ length: maxIndex + 1 }).map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => {
+                    setCurrentIndex(index);
+                    setIsAutoPlaying(false);
+                  }}
+                  style={{
+                    width: currentIndex === index ? '32px' : '8px',
+                    height: '8px',
+                    borderRadius: '4px',
+                    backgroundColor: currentIndex === index ? '#5C6BC0' : '#e0e0e0',
+                    border: 'none',
+                    cursor: 'pointer',
+                    transition: 'all 0.3s ease',
+                  }}
+                />
+              ))}
+            </div>
+          )}
         </div>
       </div>
     </div>
