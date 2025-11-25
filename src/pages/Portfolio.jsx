@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import simplevedaImg from "../assets/simpleveda.jpeg";
-import shop from "../assets/shop.png";
+import portfolioImg from "../assets/my-portfolio.png";
+import WorkExperienceImg from "../assets/work_experince.png";
 
-const SimpleVedas = () => {
+const Portfolio = () => {
   const [activeTab, setActiveTab] = useState('overview');
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
   const [selectedImage, setSelectedImage] = useState(null);
@@ -14,67 +14,39 @@ const SimpleVedas = () => {
   }, []);
 
   const projectData = {
-    title: 'Simple Vedas',
-    tagline: 'Bridging Ancient Wisdom and Modern Life',
-    subtitle: 'SPIRITUAL & EDUCATIONAL PLATFORM',
-    description: 'Simple Vedas is a platform designed to make the ancient spiritual knowledge of the Vedas accessible and practical for modern users. The platform offers teachings from the Gita, Puranas, Ramayana, Mahabharata, Upanishads, and Vedanta, along with spiritual practices such as mindfulness, yoga, inner healing, and chanting of Vedic hymns. Simple Vedas serves as a bridge between ancient wisdom and contemporary life, helping users understand, appreciate, and apply Vedic knowledge to achieve greater meaning, balance, and bliss in their daily lives.',
+    title: 'Portfolio',
+    tagline: 'Showcasing My Work, Skills & Growth',
+    subtitle: 'Designing. Developing. Delivering',
+    description: 'This portfolio website is a modern, responsive showcase of my work, skills, and experience as a developer. It highlights featured projects, provides an overview of my technical expertise, and includes a clean, user-friendly interface for easy navigation. Built with a focus on performance and design, the portfolio reflects my ability to create visually appealing, functional, and professional web applications.',
     date: '2025',
-    type: 'Full Stack Application',
-    client: 'Simple Vedas',
-    techStack: ['React', 'Node.js', 'Express', 'MySQL', 'REST APIs', 'Tailwind CSS', 'Firebase'],
-    status: 'Upgrading',
-    demoLink: 'https://simpleveda.vercel.app/',
-    gitLink: 'https://github.com/nancy787/SIMPLEVEDA/tree/main',
-    features: [
-      {
-        icon: '📚',
-        title: 'Sacred Texts Library',
-        desc: 'Comprehensive access to teachings from Vedas, Gita, Puranas, Ramayana, and Mahabharata'
-      },
-      {
-        icon: '🧘',
-        title: 'Spiritual Practices',
-        desc: 'Practical guidance on mindfulness, yoga, chanting, and inner healing'
-      },
-      {
-        icon: '✨',
-        title: 'Modern Interface',
-        desc: 'Intuitive design to explore spiritual content seamlessly'
-      },
-      {
-        icon: '👤',
-        title: 'Personal Journey',
-        desc: 'User account system with personalized learning paths'
-      },
-      {
-        icon: '⚡',
-        title: 'Scalable Architecture',
-        desc: 'Integration with REST APIs for efficient data management'
-      },
-      {
-        icon: '🚀',
-        title: 'Future-Ready',
-        desc: 'Upgraded with Node.js and Express for enhanced performance'
-      }
-    ],
-    challenge: 'The challenge was to design a platform that preserves the depth and authenticity of Vedic knowledge while making it accessible and understandable for modern users. Upgrading the platform with React, Node.js, Express, and REST APIs ensures scalability, faster performance, and a seamless user experience.',
+    type: 'Portfolio Website',
+    techStack: ['React', 'JavaScript', 'Material-ui', 'Responsive Design'],
+    status: 'Live',
+    demoLink: '#',
+    gitLink: 'https://github.com/nancy787/portfolio',
     images: [
-      simplevedaImg, shop
+     portfolioImg, WorkExperienceImg
+    ],
+    features: [
+      { icon: '⚡', title: 'Fast Performance', desc: 'Optimized load times and smooth interactions' },
+      { icon: '📱', title: 'Fully Responsive', desc: 'Seamless experience across all devices' },
+      { icon: '🎨', title: 'Modern Design', desc: 'Clean, professional aesthetic' },
+      { icon: '♿', title: 'Accessible', desc: 'Built with accessibility in mind' }
     ]
   };
 
   return (
-    <div style={{ backgroundColor: '#faf9f6', minHeight: '100vh', fontFamily: '"Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif' }}>
+    <div style={{ backgroundColor: '#f8fafc', minHeight: '100vh', fontFamily: '"Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif' }}>
       {/* Hero Section */}
       <div
         style={{
-          background: 'linear-gradient(135deg, #ff6b35 0%, #ffc13c 100%)',
+          background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
           padding: isMobile ? '60px 20px 40px' : '100px 40px 60px',
           position: 'relative',
           overflow: 'hidden',
         }}
       >
-        {/* Decorative Elements */}
+        {/* Animated Background */}
         <div
           style={{
             position: 'absolute',
@@ -82,13 +54,9 @@ const SimpleVedas = () => {
             left: 0,
             right: 0,
             bottom: 0,
-            opacity: 0.1,
-            backgroundImage: `
-              radial-gradient(circle at 20% 50%, white 2px, transparent 2px),
-              radial-gradient(circle at 80% 80%, white 2px, transparent 2px),
-              radial-gradient(circle at 40% 20%, white 1px, transparent 1px)
-            `,
-            backgroundSize: '60px 60px, 80px 80px, 100px 100px',
+            opacity: 0.15,
+            backgroundImage: 'radial-gradient(circle at 20% 50%, white 1px, transparent 1px), radial-gradient(circle at 80% 80%, white 1px, transparent 1px)',
+            backgroundSize: '50px 50px',
           }}
         />
 
@@ -97,11 +65,10 @@ const SimpleVedas = () => {
             style={{
               display: 'inline-block',
               padding: '8px 16px',
-              backgroundColor: 'rgba(255, 255, 255, 0.25)',
+              backgroundColor: 'rgba(255, 255, 255, 0.2)',
               borderRadius: '30px',
               marginBottom: '20px',
               backdropFilter: 'blur(10px)',
-              border: '1px solid rgba(255, 255, 255, 0.3)',
             }}
           >
             <span
@@ -152,7 +119,7 @@ const SimpleVedas = () => {
                 borderRadius: '12px',
                 border: 'none',
                 backgroundColor: '#ffffff',
-                color: '#ffc13c',
+                color: '#667eea',
                 fontSize: '16px',
                 fontWeight: 700,
                 cursor: 'pointer',
@@ -172,7 +139,7 @@ const SimpleVedas = () => {
                 e.currentTarget.style.boxShadow = '0 4px 16px rgba(0,0,0,0.2)';
               }}
             >
-              Explore Platform
+              View Live Project
               <span style={{ fontSize: '18px' }}>→</span>
             </a>
 
@@ -183,7 +150,7 @@ const SimpleVedas = () => {
               style={{
                 padding: isMobile ? '12px 28px' : '16px 36px',
                 borderRadius: '12px',
-                border: '2px solid rgba(255,255,255,0.4)',
+                border: '2px solid rgba(255,255,255,0.3)',
                 backgroundColor: 'transparent',
                 color: '#ffffff',
                 fontSize: '16px',
@@ -197,12 +164,12 @@ const SimpleVedas = () => {
                 backdropFilter: 'blur(10px)',
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.backgroundColor = 'rgba(255,255,255,0.15)';
-                e.currentTarget.style.borderColor = 'rgba(255,255,255,0.7)';
+                e.currentTarget.style.backgroundColor = 'rgba(255,255,255,0.1)';
+                e.currentTarget.style.borderColor = 'rgba(255,255,255,0.6)';
               }}
               onMouseLeave={(e) => {
                 e.currentTarget.style.backgroundColor = 'transparent';
-                e.currentTarget.style.borderColor = 'rgba(255,255,255,0.4)';
+                e.currentTarget.style.borderColor = 'rgba(255,255,255,0.3)';
               }}
             >
               View Code
@@ -230,13 +197,13 @@ const SimpleVedas = () => {
                 borderRadius: '20px',
                 overflow: 'hidden',
                 marginBottom: isMobile ? '40px' : '60px',
-                boxShadow: '0 20px 60px rgba(255, 107, 53, 0.15)',
-                border: '1px solid rgba(255, 107, 53, 0.1)',
+                boxShadow: '0 20px 60px rgba(0,0,0,0.1)',
+                border: '1px solid rgba(0,0,0,0.05)',
               }}
             >
               <img
                 src={projectData.images[0]}
-                alt="Simple Vedas Platform"
+                alt="Project Hero"
                 style={{
                   width: '100%',
                   height: isMobile ? '280px' : '500px',
@@ -252,7 +219,7 @@ const SimpleVedas = () => {
                 display: 'flex',
                 gap: '4px',
                 marginBottom: '32px',
-                backgroundColor: '#ffc13c',
+                backgroundColor: '#f1f5f9',
                 padding: '6px',
                 borderRadius: '12px',
                 flexWrap: isMobile ? 'wrap' : 'nowrap',
@@ -267,17 +234,17 @@ const SimpleVedas = () => {
                     padding: '12px 24px',
                     border: 'none',
                     backgroundColor: activeTab === tab ? '#ffffff' : 'transparent',
-                    color: activeTab === tab ? '#ff6b35' : '#64748b',
+                    color: activeTab === tab ? '#667eea' : '#64748b',
                     fontSize: '15px',
                     fontWeight: 600,
                     cursor: 'pointer',
                     borderRadius: '8px',
                     textTransform: 'capitalize',
                     transition: 'all 0.3s ease',
-                    boxShadow: activeTab === tab ? '0 2px 8px rgba(255, 107, 53, 0.15)' : 'none',
+                    boxShadow: activeTab === tab ? '0 2px 8px rgba(0,0,0,0.1)' : 'none',
                   }}
                   onMouseEnter={(e) => {
-                    if (activeTab !== tab) e.target.style.color = '#ffc13c';
+                    if (activeTab !== tab) e.target.style.color = '#667eea';
                   }}
                   onMouseLeave={(e) => {
                     if (activeTab !== tab) e.target.style.color = '#64748b';
@@ -316,41 +283,11 @@ const SimpleVedas = () => {
                       fontSize: '17px',
                       lineHeight: 1.8,
                       color: '#475569',
-                      marginBottom: '32px',
+                      marginBottom: 0,
                     }}
                   >
                     {projectData.description}
                   </p>
-
-                  <div
-                    style={{
-                      backgroundColor: '#fff3e6',
-                      border: '2px solid #ffc13c',
-                      borderLeft: '6px solid #ffc13c',
-                      borderRadius: '12px',
-                      padding: '24px',
-                      marginTop: '32px',
-                    }}
-                  >
-                    <h3
-                      style={{
-                        fontSize: '20px',
-                        fontWeight: 700,
-                        color: '#ffc13c',
-                        marginBottom: '12px',
-                        marginTop: 0,
-                        display: 'flex',
-                        alignItems: 'center',
-                        gap: '8px',
-                      }}
-                    >
-                      <span style={{ fontSize: '24px' }}>🎯</span>
-                      The Challenge
-                    </h3>
-                    <p style={{ fontSize: '16px', lineHeight: 1.8, color: '#475569', margin: 0 }}>
-                      {projectData.challenge}
-                    </p>
-                  </div>
                 </div>
               )}
 
@@ -371,7 +308,7 @@ const SimpleVedas = () => {
                     style={{
                       display: 'grid',
                       gridTemplateColumns: isMobile ? '1fr' : 'repeat(2, 1fr)',
-                      gap: '20px',
+                      gap: '24px',
                     }}
                   >
                     {projectData.features.map((feature, index) => (
@@ -379,15 +316,15 @@ const SimpleVedas = () => {
                         key={index}
                         style={{
                           padding: '24px',
-                          backgroundColor: '#fafafa',
+                          backgroundColor: '#f8fafc',
                           borderRadius: '16px',
                           border: '1px solid #e2e8f0',
                           transition: 'all 0.3s ease',
                         }}
                         onMouseEnter={(e) => {
                           e.currentTarget.style.transform = 'translateY(-4px)';
-                          e.currentTarget.style.boxShadow = '0 8px 20px rgba(255, 107, 53, 0.15)';
-                          e.currentTarget.style.borderColor = '#ff6b35';
+                          e.currentTarget.style.boxShadow = '0 8px 20px rgba(102, 126, 234, 0.15)';
+                          e.currentTarget.style.borderColor = '#667eea';
                         }}
                         onMouseLeave={(e) => {
                           e.currentTarget.style.transform = 'translateY(0)';
@@ -406,7 +343,7 @@ const SimpleVedas = () => {
                         >
                           {feature.title}
                         </h3>
-                        <p style={{ fontSize: '15px', color: '#64748b', margin: 0, lineHeight: 1.6 }}>
+                        <p style={{ fontSize: '15px', color: '#64748b', margin: 0 }}>
                           {feature.desc}
                         </p>
                       </div>
@@ -445,11 +382,11 @@ const SimpleVedas = () => {
                           boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
                           transition: 'all 0.3s ease',
                           cursor: 'pointer',
-                          border: '1px solid rgba(255, 107, 53, 0.1)',
+                          border: '1px solid rgba(0,0,0,0.05)',
                         }}
                         onMouseEnter={(e) => {
                           e.currentTarget.style.transform = 'scale(1.03)';
-                          e.currentTarget.style.boxShadow = '0 12px 30px rgba(255, 107, 53, 0.2)';
+                          e.currentTarget.style.boxShadow = '0 12px 30px rgba(0,0,0,0.2)';
                         }}
                         onMouseLeave={(e) => {
                           e.currentTarget.style.transform = 'scale(1)';
@@ -478,13 +415,13 @@ const SimpleVedas = () => {
           <div>
             <div
               style={{
-                background: 'linear-gradient(135deg, #ff6b35 0%, #f7931e 100%)',
+                background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
                 borderRadius: '20px',
                 padding: isMobile ? '32px 24px' : '40px 32px',
                 color: 'white',
                 position: isMobile ? 'relative' : 'sticky',
                 top: isMobile ? '0' : '24px',
-                boxShadow: '0 20px 60px rgba(255, 107, 53, 0.3)',
+                boxShadow: '0 20px 60px rgba(102, 126, 234, 0.3)',
               }}
             >
               <h3
@@ -502,13 +439,12 @@ const SimpleVedas = () => {
                 {[
                   { label: 'Date', value: projectData.date },
                   { label: 'Type', value: projectData.type },
-                  { label: 'Client', value: projectData.client },
                 ].map((item, i) => (
                   <div key={i}>
                     <p
                       style={{
                         fontSize: '12px',
-                        opacity: 0.85,
+                        opacity: 0.8,
                         marginBottom: '10px',
                         textTransform: 'uppercase',
                         letterSpacing: '1.5px',
@@ -527,7 +463,7 @@ const SimpleVedas = () => {
                   <p
                     style={{
                       fontSize: '12px',
-                      opacity: 0.85,
+                      opacity: 0.8,
                       marginBottom: '14px',
                       textTransform: 'uppercase',
                       letterSpacing: '1.5px',
@@ -560,7 +496,7 @@ const SimpleVedas = () => {
                   <p
                     style={{
                       fontSize: '12px',
-                      opacity: 0.85,
+                      opacity: 0.8,
                       marginBottom: '10px',
                       textTransform: 'uppercase',
                       letterSpacing: '1.5px',
@@ -575,9 +511,9 @@ const SimpleVedas = () => {
                       alignItems: 'center',
                       gap: '8px',
                       padding: '8px 16px',
-                      backgroundColor: 'rgba(251, 191, 36, 0.25)',
+                      backgroundColor: 'rgba(34, 197, 94, 0.2)',
                       borderRadius: '8px',
-                      border: '1px solid rgba(251, 191, 36, 0.4)',
+                      border: '1px solid rgba(34, 197, 94, 0.3)',
                     }}
                   >
                     <div
@@ -585,8 +521,7 @@ const SimpleVedas = () => {
                         width: '8px',
                         height: '8px',
                         borderRadius: '50%',
-                        backgroundColor: '#fbbf24',
-                        animation: 'pulse 2s ease-in-out infinite',
+                        backgroundColor: '#22c55e',
                       }}
                     />
                     <span style={{ fontSize: '15px', fontWeight: 600 }}>{projectData.status}</span>
@@ -596,7 +531,7 @@ const SimpleVedas = () => {
                 <div
                   style={{
                     height: '1px',
-                    backgroundColor: 'rgba(255, 255, 255, 0.25)',
+                    backgroundColor: 'rgba(255, 255, 255, 0.2)',
                     margin: '8px 0',
                   }}
                 />
@@ -618,7 +553,7 @@ const SimpleVedas = () => {
                       fontWeight: 600,
                       textDecoration: 'none',
                       transition: 'all 0.3s ease',
-                      border: '1px solid rgba(255, 255, 255, 0.25)',
+                      border: '1px solid rgba(255, 255, 255, 0.2)',
                     }}
                     onMouseEnter={(e) => {
                       e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.25)';
@@ -629,7 +564,7 @@ const SimpleVedas = () => {
                       e.currentTarget.style.transform = 'translateX(0)';
                     }}
                   >
-                    <span>Explore Live Platform</span>
+                    <span>View Live Project</span>
                     <span style={{ fontSize: '20px' }}>→</span>
                   </a>
 
@@ -649,7 +584,7 @@ const SimpleVedas = () => {
                       fontWeight: 600,
                       textDecoration: 'none',
                       transition: 'all 0.3s ease',
-                      border: '1px solid rgba(255, 255, 255, 0.25)',
+                      border: '1px solid rgba(255, 255, 255, 0.2)',
                     }}
                     onMouseEnter={(e) => {
                       e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.25)';
@@ -701,20 +636,8 @@ const SimpleVedas = () => {
           />
         </div>
       )}
-
-      {/* CSS Animation */}
-      <style>{`
-        @keyframes pulse {
-          0%, 100% {
-            opacity: 1;
-          }
-          50% {
-            opacity: 0.5;
-          }
-        }
-      `}</style>
     </div>
   );
 };
 
-export default SimpleVedas;
+export default Portfolio;

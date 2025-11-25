@@ -13,7 +13,7 @@ export default function SocialLinks() {
   },
   {
     icon: <GitHubIcon style={{ fontSize: '1.8rem' }} />,
-    url: "https://github.com/nancy787",
+    url: "https://github.com/nancy787/nancy-kumari",
   },
   {
     icon: <MailOutlineIcon style={{ fontSize: '1.8rem' }} />,

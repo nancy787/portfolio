@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from "react-router-dom";
+import FitpassLoginImg from "../assets/fitpass-login.png";
+import simplevedaImg from "../assets/simpleveda.jpeg";
+import portfolioImg from "../assets/my-portfolio.png";
 
 const Projects = () => {
 const [hoveredProject, setHoveredProject] = useState(null);
@@ -11,32 +14,30 @@ window.addEventListener('resize', handleResize);
 return () => window.removeEventListener('resize', handleResize);
 }, []);
 
-const projects = [
-{
-title: 'FitPass',
-subtitle: 'Full Stack Application',
-image: '[https://images.unsplash.com/photo-1501504905252-473c47e087f8?w=800&h=500&fit=crop](https://images.unsplash.com/photo-1501504905252-473c47e087f8?w=800&h=500&fit=crop)',
-gradient: 'linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%)',
-bgColor: '#e0f2fe',
-link :'FitPass'
-},
-{
-title: 'Tybitx Services Website',
-subtitle: 'Website',
-image: '[https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=500&fit=crop](https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=500&fit=crop)',
-gradient: 'linear-gradient(135deg, #ea580c 0%, #fb923c 100%)',
-bgColor: '#ffedd5',
-link  : 'Simple-vedas'
-},
-{
-title: 'UNILAG DLI Support System',
-subtitle: 'Full Stack Application',
-image: '[https://images.unsplash.com/photo-1551434678-e076c223a692?w=800&h=500&fit=crop](https://images.unsplash.com/photo-1551434678-e076c223a692?w=800&h=500&fit=crop)',
-gradient: 'linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%)',
-bgColor: '#ede9fe',
-},
+  const projects = [
+  {
+  title: 'FitPass',
+  subtitle: 'Backend',
+  image: FitpassLoginImg,
+  bgColor : '#e0f2fe',
+  link :'FitPass'
+  },
+  {
+  title: 'SimpleVedas',
+  subtitle: 'Full Stack Application',
+  image: simplevedaImg,
+  bgColor: '#ffedd5',
+  link  : 'Simple-vedas'
+  },
+  {
+  title: 'Portfolio',
+  subtitle: 'Showcasing My Work, Skills & Growth',
+  image: portfolioImg,
+  bgColor: '#ede9fe',
+  link  : 'portfolio'
+  },
 
-];
+  ];
 
   return (
   <div
@@ -153,42 +154,7 @@ bgColor: '#ede9fe',
                     padding: '16px',
                   }}
                 >
-                  <div
-                    style={{
-                      backgroundColor: 'rgba(255, 255, 255, 0.15)',
-                      backdropFilter: 'blur(10px)',
-                      WebkitBackdropFilter: 'blur(10px)',
-                      padding: isMobile ? '16px 20px' : '24px 32px',
-                      borderRadius: '16px',
-                      border: '1px solid rgba(255, 255, 255, 0.2)',
-                      textAlign: 'center',
-                      transform: hoveredProject === index ? 'scale(1.05)' : 'scale(1)',
-                      transition: 'transform 0.3s ease',
-                    }}
-                  >
-                    <div style={{ fontSize: isMobile ? '32px' : '48px', marginBottom: '12px' }}>💻</div>
-                    <h3
-                      style={{
-                        fontSize: isMobile ? '20px' : '28px',
-                        fontWeight: 700,
-                        color: '#ffffff',
-                        margin: '0 0 8px 0',
-                        textShadow: '0 2px 8px rgba(0,0,0,0.2)',
-                      }}
-                    >
-                      {project.title.split(' ').slice(0, 2).join(' ')}
-                    </h3>
-                    <p
-                      style={{
-                        fontSize: isMobile ? '14px' : '16px',
-                        color: 'rgba(255, 255, 255, 0.9)',
-                        margin: 0,
-                        fontWeight: 500,
-                      }}
-                    >
-                      View Project →
-                    </p>
-                  </div>
+  
                 </div>
               </div>
 
@@ -224,38 +190,6 @@ bgColor: '#ede9fe',
             </div>
           </Link>
         ))}
-      </div>
-
-      {/* View All Button */}
-      <div style={{ textAlign: 'center', marginTop: isMobile ? '48px' : '64px' }}>
-        <button
-          style={{
-            padding: isMobile ? '12px 32px' : '16px 48px',
-            borderRadius: '50px',
-            border: '2px solid #6C7EFF',
-            backgroundColor: 'transparent',
-            color: '#6C7EFF',
-            fontSize: '16px',
-            fontWeight: 600,
-            cursor: 'pointer',
-            transition: 'all 0.3s ease',
-            fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif',
-          }}
-          onMouseEnter={(e) => {
-            e.target.style.backgroundColor = '#6C7EFF';
-            e.target.style.color = '#ffffff';
-            e.target.style.transform = 'translateY(-2px)';
-            e.target.style.boxShadow = '0 8px 20px rgba(108, 126, 255, 0.3)';
-          }}
-          onMouseLeave={(e) => {
-            e.target.style.backgroundColor = 'transparent';
-            e.target.style.color = '#6C7EFF';
-            e.target.style.transform = 'translateY(0)';
-            e.target.style.boxShadow = 'none';
-          }}
-        >
-          View All Projects
-        </button>
       </div>
     </div>
   </div>

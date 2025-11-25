@@ -13,6 +13,7 @@ import ProjectDetails from "./pages/ProjectDetails";
 import Main from "./pages/Main";
 import FItPass from "./pages/FitPass";
 import SimpleVedas from "./pages/SimpleVedas";
+import Portfolio from "./pages/Portfolio";
 
 export {
     Header,
@@ -30,4 +31,5 @@ export {
     Main,
     FItPass,
     SimpleVedas,
+    Portfolio
 }

@@ -51,39 +51,59 @@ const WorkExperience = () => {
   return (
     <div
       style={{
-        backgroundColor: '#F5F7FA',
+        backgroundColor: '#f1f5f9',
         minHeight: '100vh',
-        padding: isMobile ? '40px 16px' : '80px 24px',
-        fontFamily: '"Inter", "Roboto", "Helvetica", "Arial", sans-serif',
+        padding: isMobile ? '60px 20px' : '100px 40px',
+        fontFamily: '"Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif',
       }}
     >
-      <div style={{ maxWidth: '1280px', margin: '0 auto' }}>
+      <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
         {/* Header */}
-        <div style={{ textAlign: 'center', marginBottom: isMobile ? '48px' : '64px' }}>
-          <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', marginBottom: '16px' }}>
+        <div style={{ textAlign: 'center', marginBottom: isMobile ? '60px' : '80px' }}>
+          <div
+            style={{
+              display: 'inline-block',
+              padding: '8px 20px',
+              backgroundColor: 'rgba(59, 130, 246, 0.1)',
+              border: '1px solid rgba(59, 130, 246, 0.2)',
+              borderRadius: '30px',
+              marginBottom: '20px',
+            }}
+          >
             <span
               style={{
-                color: '#5C6BC0',
-                fontSize: '14px',
+                color: '#3B82F6',
+                fontSize: '13px',
                 fontWeight: 600,
-                letterSpacing: '1.5px',
+                letterSpacing: '2px',
                 textTransform: 'uppercase',
               }}
             >
-              ›› WORK EXPERIENCS
+              ✦ Career Journey
             </span>
           </div>
           <h2
             style={{
-              fontSize: isMobile ? '2rem' : 'clamp(2.5rem, 5vw, 3rem)',
-              fontWeight: 700,
-              color: '#212121',
-              margin: 0,
-              letterSpacing: '-0.5px',
+              fontSize: isMobile ? '2.5rem' : 'clamp(3rem, 5vw, 4rem)',
+              fontWeight: 800,
+              color: '#1e293b',
+              margin: '0 0 16px 0',
+              letterSpacing: '-1px',
             }}
           >
-            My Work Experience
+            Work Experience
           </h2>
+          <p
+            style={{
+              fontSize: isMobile ? '16px' : '18px',
+              color: '#64748b',
+              maxWidth: '600px',
+              margin: '0 auto',
+              lineHeight: 1.6,
+            }}
+          >
+            Building innovative solutions and driving impact across diverse projects
+          </p>
         </div>
 
         {/* Experience Grid */}
@@ -91,7 +111,7 @@ const WorkExperience = () => {
           style={{
             display: 'grid',
             gridTemplateColumns: isMobile ? '1fr' : 'repeat(auto-fit, minmax(500px, 1fr))',
-            gap: isMobile ? '24px' : '32px',
+            gap: isMobile ? '32px' : '40px',
           }}
         >
           {experiences.map((exp, index) => (
@@ -99,40 +119,73 @@ const WorkExperience = () => {
               key={index}
               style={{
                 backgroundColor: '#ffffff',
-                borderRadius: '16px',
-                padding: isMobile ? '28px' : '36px',
-                border: '1px solid #E5E7EB',
-                transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+                borderRadius: '20px',
+                padding: isMobile ? '32px 24px' : '40px 32px',
+                border: '1px solid #e2e8f0',
+                transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
                 cursor: 'pointer',
                 position: 'relative',
                 overflow: 'hidden',
+                boxShadow: '0 4px 20px rgba(0,0,0,0.05)',
               }}
               onMouseEnter={(e) => {
                 if (!isMobile) {
-                  e.currentTarget.style.boxShadow = '0 12px 40px rgba(0,0,0,0.1)';
-                  e.currentTarget.style.transform = 'translateY(-6px)';
+                  e.currentTarget.style.boxShadow = `0 20px 60px ${exp.logoColor}30`;
+                  e.currentTarget.style.transform = 'translateY(-8px)';
                   e.currentTarget.style.borderColor = `${exp.logoColor}40`;
                 }
               }}
               onMouseLeave={(e) => {
                 if (!isMobile) {
-                  e.currentTarget.style.boxShadow = 'none';
+                  e.currentTarget.style.boxShadow = '0 4px 20px rgba(0,0,0,0.05)';
                   e.currentTarget.style.transform = 'translateY(0)';
-                  e.currentTarget.style.borderColor = '#E5E7EB';
+                  e.currentTarget.style.borderColor = '#e2e8f0';
                 }
               }}
             >
-              {/* Accent Bar */}
+              {/* Top Accent Bar */}
               <div
                 style={{
                   position: 'absolute',
                   top: 0,
                   left: 0,
-                  width: '4px',
-                  height: '100%',
-                  backgroundColor: exp.logoColor,
+                  right: 0,
+                  height: '4px',
+                  background: `linear-gradient(90deg, ${exp.logoColor} 0%, ${exp.logoColor}80 100%)`,
                 }}
               />
+
+              {/* Status Badge */}
+              {exp.status === 'Current' && (
+                <div
+                  style={{
+                    position: 'absolute',
+                    top: '20px',
+                    right: '20px',
+                    padding: '6px 14px',
+                    backgroundColor: 'rgba(16, 185, 129, 0.1)',
+                    border: '1px solid rgba(16, 185, 129, 0.3)',
+                    borderRadius: '20px',
+                    fontSize: '12px',
+                    fontWeight: 600,
+                    color: '#10B981',
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '6px',
+                  }}
+                >
+                  <div
+                    style={{
+                      width: '6px',
+                      height: '6px',
+                      borderRadius: '50%',
+                      backgroundColor: '#10B981',
+                      animation: 'pulse 2s ease-in-out infinite',
+                    }}
+                  />
+                  Current
+                </div>
+              )}
 
               {/* Header Row */}
               <div
@@ -140,18 +193,18 @@ const WorkExperience = () => {
                   display: 'flex',
                   flexDirection: isMobile ? 'column' : 'row',
                   justifyContent: 'space-between',
-                  alignItems: isMobile ? 'flex-start' : 'center',
-                  marginBottom: isMobile ? '24px' : '28px',
+                  alignItems: isMobile ? 'flex-start' : 'flex-start',
+                  marginBottom: '28px',
                   gap: '12px',
                 }}
               >
                 <h3
                   style={{
-                    fontSize: '23px',
+                    fontSize: '24px',
                     fontWeight: 700,
-                    color: '#1a1a1a',
+                    color: '#1e293b',
                     margin: 0,
-                    letterSpacing: '-0.3px',
+                    letterSpacing: '-0.5px',
                   }}
                 >
                   {exp.title}
@@ -159,13 +212,13 @@ const WorkExperience = () => {
                 <span
                   style={{
                     fontSize: '14px',
-                    color: '#64748B',
+                    color: '#64748b',
                     fontWeight: 500,
                     whiteSpace: 'nowrap',
-                    backgroundColor: '#F8FAFC',
-                    padding: '6px 14px',
-                    borderRadius: '8px',
-                    border: '1px solid #E2E8F0',
+                    backgroundColor: '#f8fafc',
+                    padding: '8px 16px',
+                    borderRadius: '10px',
+                    border: '1px solid #e2e8f0',
                   }}
                 >
                   {exp.period}
@@ -186,20 +239,20 @@ const WorkExperience = () => {
                   style={{
                     width: '88px',
                     height: '88px',
-                    borderRadius: '12px',
-                    backgroundColor: `${exp.logoColor}10`,
-                    border: `2px solid ${exp.logoColor}25`,
+                    borderRadius: '16px',
+                    background: `linear-gradient(135deg, ${exp.logoColor}15 0%, ${exp.logoColor}25 100%)`,
+                    border: `2px solid ${exp.logoColor}30`,
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
                     flexShrink: 0,
-                    fontSize: '36px',
-                    boxShadow: `0 4px 12px ${exp.logoColor}15`,
+                    boxShadow: `0 8px 24px ${exp.logoColor}20`,
                     transition: 'transform 0.3s ease',
+                    overflow: 'hidden',
                   }}
                   onMouseEnter={(e) => {
                     if (!isMobile) {
-                      e.currentTarget.style.transform = 'scale(1.05) rotate(2deg)';
+                      e.currentTarget.style.transform = 'scale(1.05) rotate(-3deg)';
                     }
                   }}
                   onMouseLeave={(e) => {
@@ -208,15 +261,22 @@ const WorkExperience = () => {
                     }
                   }}
                 >
-                  <img src={exp.logo} alt="logo" style={{ width: '100%', height: '100%' }} />
-
+                  <img 
+                    src={exp.logo} 
+                    alt={`${exp.company} logo`} 
+                    style={{ 
+                      width: '100%', 
+                      height: '100%', 
+                      objectFit: 'cover',
+                    }} 
+                  />
                 </div>
 
                 {/* Company Details */}
                 <div style={{ flex: 1 }}>
                   <h4
                     style={{
-                      fontSize: '21px',
+                      fontSize: '20px',
                       fontWeight: 600,
                       color: exp.logoColor,
                       marginBottom: '14px',
@@ -227,9 +287,9 @@ const WorkExperience = () => {
                   </h4>
                   <p
                     style={{
-                      fontSize: '15px',
+                      fontSize: '16px',
                       lineHeight: 1.8,
-                      color: '#4B5563',
+                      color: '#475569',
                       margin: 0,
                     }}
                   >
@@ -241,6 +301,18 @@ const WorkExperience = () => {
           ))}
         </div>
       </div>
+
+      {/* CSS Animation */}
+      <style>{`
+        @keyframes pulse {
+          0%, 100% {
+            opacity: 1;
+          }
+          50% {
+            opacity: 0.5;
+          }
+        }
+      `}</style>
     </div>
   );
 };

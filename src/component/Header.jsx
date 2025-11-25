@@ -64,7 +64,7 @@ const Header = () => {
       <Button
         variant="contained"
         color="primary"
-        href="/cv.pdf"
+        href="/nancy_kumari.pdf"
         target="_blank"
         sx={{ borderRadius: "20px", mt: 2 }}
       >
@@ -108,7 +108,7 @@ const Header = () => {
           <Button
             variant="contained"
             color="primary"
-            href="/cv.pdf"
+            href="../assets/nancy_kumari.pdf"
             target="_blank"
             sx={{ borderRadius: "20px", display: { xs: "none", md: "block" } }}
           >
