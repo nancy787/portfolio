@@ -131,7 +131,7 @@ const About = () => {
     {
       title: 'Laravel',
       description: 'Developing elegant web applications using PHP framework with MVC architecture and Eloquent ORM.',
-      percentage: 85,
+      percentage: 95,
       icon: <LaravelIcon />,
       color: '#FF2D20',
     },
@@ -145,7 +145,7 @@ const About = () => {
     {
       title: 'MySQL',
       description: 'Building robust relational database systems with complex queries and optimized schema design.',
-      percentage: 82,
+      percentage: 92,
       icon: <DatabaseIcon />,
       color: '#4479A1',
     },

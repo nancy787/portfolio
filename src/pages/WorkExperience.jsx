@@ -20,7 +20,7 @@ const WorkExperience = () => {
       company: 'New Spiritz',
       logo: NewSpiritzLogo,
       description: 'Built robust backend systems and APIs with Stripe and AI chatbot integration, delivering secure transactions, high performance, and seamless user experiences.',
-      logoColor: '#10B981',
+      logoColor: '#F59E0B',
     },
     {
       title: 'Analyst Programmer',
@@ -28,7 +28,7 @@ const WorkExperience = () => {
       company: 'EbizON',
       logo: ebizonLogo,
       description: 'Built robust backend systems and APIs powering web platforms, ensuring performance and maintainability using Node.js & Laravel.',
-      logoColor: '#6366F1',
+      logoColor: '#FFD700',
     },
     {
       title: 'Laravel Developer',
@@ -36,7 +36,7 @@ const WorkExperience = () => {
       company: 'DigitalFox',
       logo: DigitalFoxLogo,
       description: 'Enhanced existing projects and contributed to scalable software solutions, focusing on clean architecture and modular design.',
-      logoColor: '#F59E0B',
+      logoColor: '#00000',
     },
     {
       title: 'Web Developer Intern',
@@ -44,7 +44,7 @@ const WorkExperience = () => {
       company: 'VSAT Analytics',
       logo: VsatLogo,
       description: 'Designed responsive websites with user-friendly interfaces, optimized performance, and clean, maintainable code.',
-      logoColor: '#8B5CF6',
+      logoColor: '#10B981',
     },
   ];
 
@@ -70,7 +70,7 @@ const WorkExperience = () => {
                 textTransform: 'uppercase',
               }}
             >
-              ›› RESUME
+              ›› WORK EXPERIENCS
             </span>
           </div>
           <h2

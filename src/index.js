@@ -11,6 +11,8 @@ import WorkExperience from "./pages/WorkExperience";
 import Projects from "./pages/Projects";
 import ProjectDetails from "./pages/ProjectDetails";
 import Main from "./pages/Main";
+import FItPass from "./pages/FitPass";
+import SimpleVedas from "./pages/SimpleVedas";
 
 export {
     Header,
@@ -25,5 +27,7 @@ export {
     WorkExperience,
     Projects,
     ProjectDetails,
-    Main
+    Main,
+    FItPass,
+    SimpleVedas,
 }

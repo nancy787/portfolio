@@ -25,7 +25,7 @@ const Footer = () => {
       </Box>
         {/* Navigation Links */}
         <Box sx={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', mb: 2 }}>
-          {['Home', 'About', 'Services', 'Portfolio', 'Blog', 'Contact'].map((item) => (
+          {['Home', 'About', 'Projects', 'Blog', 'Contact'].map((item) => (
             <Link 
               key={item} 
               href="#" 
@@ -38,7 +38,7 @@ const Footer = () => {
 
         {/* Copyright */}
         <Typography variant="body2" sx={{ color: '#666' }}>
-          © 2025 Nancy. Designed by <Link href="https://kenzycodex.com" sx={{ color: '#1976d2', textDecoration: 'none' }}>Nancy</Link>
+          © 2025 Nancy. Designed by <Link href="https://www.linkedin.com/in/nancy-kumari-bb9722204/" sx={{ color: '#1976d2', textDecoration: 'none' }}>Nancy</Link>
         </Typography>
       </Box>
     );

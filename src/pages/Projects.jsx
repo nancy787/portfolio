@@ -13,11 +13,12 @@ return () => window.removeEventListener('resize', handleResize);
 
 const projects = [
 {
-title: 'LifeCard University Portal',
+title: 'FitPass',
 subtitle: 'Full Stack Application',
 image: '[https://images.unsplash.com/photo-1501504905252-473c47e087f8?w=800&h=500&fit=crop](https://images.unsplash.com/photo-1501504905252-473c47e087f8?w=800&h=500&fit=crop)',
 gradient: 'linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%)',
 bgColor: '#e0f2fe',
+link :'FitPass'
 },
 {
 title: 'Tybitx Services Website',
@@ -25,6 +26,7 @@ subtitle: 'Website',
 image: '[https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=500&fit=crop](https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=500&fit=crop)',
 gradient: 'linear-gradient(135deg, #ea580c 0%, #fb923c 100%)',
 bgColor: '#ffedd5',
+link  : 'Simple-vedas'
 },
 {
 title: 'UNILAG DLI Support System',
@@ -59,7 +61,7 @@ bgColor: '#ede9fe',
   textTransform: 'uppercase',
   }}
   >
-  ›› MY PORTFOLIO </span> </div>
+  ›› MY PROJECTS </span> </div>
   <h2
   style={{
   fontSize: isMobile ? '2rem' : 'clamp(2.5rem, 5vw, 3.5rem)',
@@ -79,7 +81,7 @@ bgColor: '#ede9fe',
         }}
       >
         {projects.map((project, index) => (
-          <Link key={index} to="/project-details" style={{ textDecoration: 'none' }}>
+          <Link key={index} to={`/${project.link}`} style={{ textDecoration: 'none' }}>
             <div
               style={{
                 backgroundColor: '#ffffff',

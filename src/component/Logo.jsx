@@ -34,11 +34,7 @@ mr: 1, // space between circle and text
 }}
 
 >
-
-```
 N
-```
-
   </Box>
   ancy
             </Typography>
