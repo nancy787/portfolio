@@ -1,6 +1,27 @@
 import { Box, Typography, Link } from '@mui/material';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 const Footer = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const scrollToSection = (sectionId) => {
+    if (location.pathname !== '/') {
+      navigate('/');
+      setTimeout(() => {
+        const element = document.getElementById(sectionId.toLowerCase());
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth" });
+        }
+      }, 100);
+    } else {
+      const element = document.getElementById(sectionId.toLowerCase());
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
+    }
+  };
+  
     return (
      <Box
         component="footer"
@@ -25,11 +46,21 @@ const Footer = () => {
       </Box>
         {/* Navigation Links */}
         <Box sx={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', mb: 2 }}>
-          {['Home', 'About', 'Projects', 'Blog', 'Contact'].map((item) => (
+          {['Home', 'About', 'Projects', 'Contact'].map((item) => (
             <Link 
-              key={item} 
-              href="#" 
-              sx={{ mx: 2, my: 0.5, color: '#333', textDecoration: 'none', fontWeight: 500 }}
+             key={item} 
+            onClick={() => scrollToSection(item)}
+            sx={{ 
+              mx: 2, 
+              my: 0.5, 
+              color: '#333', 
+              textDecoration: 'none', 
+              fontWeight: 500,
+              cursor: 'pointer',
+              '&:hover': {
+                color: '#1976d2',
+              }
+            }}
             >
               {item}
             </Link>

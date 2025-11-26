@@ -39,24 +39,36 @@ const Home = () => {
                 <span className="exp-text">3+ Years Experience</span>
               </div>
 
-              <div className="btn-row">
-                <button
-                  onMouseEnter={() => setHoveredHire(true)}
-                  onMouseLeave={() => setHoveredHire(false)}
-                  className="hire-btn"
-                  style={{ transform: hoveredHire ? "scale(1.1)" : "scale(1)" }}
-                >
-                  Hire Me Now
-                </button>
-                <button
-                  onMouseEnter={() => setHoveredArrow(true)}
-                  onMouseLeave={() => setHoveredArrow(false)}
-                  className="arrow-btn"
-                  style={{ transform: hoveredArrow ? "scale(1.1) rotate(45deg)" : "scale(1)" }}
-                >
-                  ↗️
-                </button>
-              </div>
+<div className="btn-row">
+  <button
+    onMouseEnter={() => setHoveredHire(true)}
+    onMouseLeave={() => setHoveredHire(false)}
+    onClick={() => {
+      const contactSection = document.getElementById('contact');
+      if (contactSection) {
+        contactSection.scrollIntoView({ behavior: 'smooth' });
+      }
+    }}
+    className="hire-btn"
+    style={{ transform: hoveredHire ? "scale(1.1)" : "scale(1)" }}
+  >
+    Hire Me Now
+  </button>
+  <button
+    onMouseEnter={() => setHoveredArrow(true)}
+    onMouseLeave={() => setHoveredArrow(false)}
+    onClick={() => {
+      const contactSection = document.getElementById('contact');
+      if (contactSection) {
+        contactSection.scrollIntoView({ behavior: 'smooth' });
+      }
+    }}
+    className="arrow-btn"
+    style={{ transform: hoveredArrow ? "scale(1.1) rotate(45deg)" : "scale(1)" }}
+  >
+    ↗️
+  </button>
+</div>
 
               <SocialLinks />
             </div>
