@@ -2,7 +2,7 @@ import React from 'react'
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import { BrowserRouter } from 'react-router-dom'
-import { AppRoutes } from './index.js'
+import { AppRoutes, Chatbot } from './index.js'
 import { ThemeProvider } from '@mui/material/styles';
 import theme from './theme.js'
 

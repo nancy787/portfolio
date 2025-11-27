@@ -14,6 +14,7 @@ import Main from "./pages/Main";
 import FItPass from "./pages/FitPass";
 import SimpleVedas from "./pages/SimpleVedas";
 import Portfolio from "./pages/Portfolio";
+import Chatbot from "./pages/Chatbot";
 
 export {
     Header,
@@ -31,5 +32,6 @@ export {
     Main,
     FItPass,
     SimpleVedas,
-    Portfolio
+    Portfolio,
+    Chatbot
 }
