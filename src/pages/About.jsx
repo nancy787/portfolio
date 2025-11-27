@@ -96,8 +96,17 @@ const About = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
   const [hoveredIndex, setHoveredIndex] = useState(null);
-  // New State for Mobile View (e.g., screen width <= 600px)
-  const [isMobile, setIsMobile] = useState(false); 
+  const [windowWidth, setWindowWidth] = useState(typeof window !== 'undefined' ? window.innerWidth : 1024);
+  
+  const getItemsPerView = () => {
+    if (windowWidth <= 640) return 1;
+    if (windowWidth <= 1024) return 2;
+    if (windowWidth <= 1280) return 3;
+    return 4;
+  };
+
+  const isMobile = windowWidth <= 768;
+  const itemsPerView = getItemsPerView();
 
   const skills = [
     {
@@ -167,7 +176,7 @@ const About = () => {
       title: 'Tailwind CSS',
       description: 'Designing highly customizable and responsive UIs using utility-first CSS framework.',
       percentage: 88,
-      icon: <PaletteIcon />, // make sure you import or create this icon
+      icon: <PaletteIcon />,
       color: '#06B6D4',
     },
     {
@@ -193,17 +202,15 @@ const About = () => {
     },
   ];
 
-  const itemsPerView = 4;
   const maxIndex = Math.max(0, skills.length - itemsPerView);
-  const mobileBreakpoint = 768; // Define a breakpoint for mobile/tablet view
 
-  // Effect to handle window resize for mobile detection
+  // Effect to handle window resize
   useEffect(() => {
     const handleResize = () => {
-      setIsMobile(window.innerWidth <= mobileBreakpoint);
+      setWindowWidth(window.innerWidth);
     };
 
-    handleResize(); // Set initial state
+    handleResize();
     window.addEventListener('resize', handleResize);
 
     return () => window.removeEventListener('resize', handleResize);
@@ -231,30 +238,29 @@ const About = () => {
   };
 
   // Determine which skills to display based on view type
-  const skillsToDisplay = isMobile ? skills : skills.slice(0); // On mobile, show all, otherwise show all for carousel track
+  const skillsToDisplay = isMobile ? skills : skills.slice(0);
 
   // Card list style change for mobile
   const cardListStyle = isMobile
     ? {
-        display: 'grid', // Use grid for simple stacking
-        gridTemplateColumns: '1fr', // Single column
+        display: 'grid',
+        gridTemplateColumns: '1fr',
         gap: '24px',
         padding: '8px 0',
       }
     : {
         display: 'flex',
-        gap: '24px',
-        transform: `translateX(-${currentIndex * (100 / itemsPerView + 2)}%)`,
+        gap: windowWidth <= 640 ? '16px' : '24px',
+        transform: `translateX(-${currentIndex * (100 / itemsPerView + (windowWidth <= 640 ? 1.5 : 2))}%)`,
         transition: 'transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)',
         padding: '8px 0',
       };
 
   // Card style change for mobile
   const cardStyle = (index) => ({
-    // Base styles
     backgroundColor: '#ffffff',
     borderRadius: '8px',
-    padding: '32px 24px',
+    padding: windowWidth <= 640 ? '24px 20px' : '32px 24px',
     boxShadow:
       hoveredIndex === index
         ? '0 8px 16px rgba(0,0,0,0.15)'
@@ -264,9 +270,9 @@ const About = () => {
     cursor: 'pointer',
     position: 'relative',
     overflow: 'hidden',
-    // View-specific styles
-    minWidth: isMobile ? 'auto' : `calc(${100 / itemsPerView}% - 18px)`,
-    width: isMobile ? '100%' : `calc(${100 / itemsPerView}% - 18px)`,
+    minWidth: isMobile ? 'auto' : `calc(${100 / itemsPerView}% - ${windowWidth <= 640 ? 12 : 18}px)`,
+    width: isMobile ? '100%' : `calc(${100 / itemsPerView}% - ${windowWidth <= 640 ? 12 : 18}px)`,
+    flexShrink: 0,
   });
 
   return (
@@ -274,26 +280,26 @@ const About = () => {
       style={{
         backgroundColor: '#fafafa',
         minHeight: '100vh',
-        padding: '80px 24px',
+        padding: windowWidth <= 640 ? '60px 16px' : '80px 24px',
         fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif',
       }}
     >
       <div style={{ maxWidth: '1280px', margin: '0 auto' }}>
         {/* Header Section */}
-        <div style={{ textAlign: 'center', marginBottom: '72px' }}>
-          {/* Overline and Main Heading are the same... */}
-          {/* ... (Header code remains unchanged) ... */}
+        <div style={{ textAlign: 'center', marginBottom: windowWidth <= 640 ? '48px' : '72px' }}>
           <div
             style={{
               display: 'inline-flex',
               alignItems: 'center',
               gap: '8px',
               marginBottom: '16px',
+              flexWrap: 'wrap',
+              justifyContent: 'center',
             }}
           >
             <div
               style={{
-                width: '40px',
+                width: windowWidth <= 640 ? '30px' : '40px',
                 height: '2px',
                 backgroundColor: '#5C6BC0',
               }}
@@ -301,7 +307,7 @@ const About = () => {
             <span
               style={{
                 color: '#5C6BC0',
-                fontSize: '25px',
+                fontSize: windowWidth <= 640 ? '18px' : '25px',
                 fontWeight: 500,
                 letterSpacing: '1.5px',
                 textTransform: 'uppercase',
@@ -311,7 +317,7 @@ const About = () => {
             </span>
             <div
               style={{
-                width: '40px',
+                width: windowWidth <= 640 ? '30px' : '40px',
                 height: '2px',
                 backgroundColor: '#5C6BC0',
               }}
@@ -321,7 +327,7 @@ const About = () => {
           {/* Main Heading */}
           <h2
             style={{
-              fontSize: 'clamp(2.5rem, 5vw, 3.75rem)',
+              fontSize: windowWidth <= 640 ? '2rem' : 'clamp(2.5rem, 5vw, 3.75rem)',
               fontWeight: 300,
               color: '#212121',
               marginBottom: '24px',
@@ -335,11 +341,12 @@ const About = () => {
           <p
             style={{
               color: '#616161',
-              fontSize: '18px',
+              fontSize: windowWidth <= 640 ? '16px' : '18px',
               lineHeight: 1.75,
               maxWidth: '900px',
               margin: '0 auto',
               fontWeight: 400,
+              padding: windowWidth <= 640 ? '0 8px' : '0',
             }}
           >
             Hello there, I'm Nancy! I love building software that makes a difference. 
@@ -359,6 +366,7 @@ const About = () => {
             <>
               <button
                 onClick={handlePrev}
+                aria-label="Previous"
                 style={{
                   position: 'absolute',
                   left: '-20px',
@@ -395,6 +403,7 @@ const About = () => {
 
               <button
                 onClick={handleNext}
+                aria-label="Next"
                 style={{
                   position: 'absolute',
                   right: '-20px',
@@ -465,8 +474,8 @@ const About = () => {
                   {/* Icon Container */}
                   <div
                     style={{
-                      width: '64px',
-                      height: '64px',
+                      width: windowWidth <= 640 ? '56px' : '64px',
+                      height: windowWidth <= 640 ? '56px' : '64px',
                       borderRadius: '50%',
                       backgroundColor: `${skill.color}15`,
                       display: 'flex',
@@ -484,7 +493,7 @@ const About = () => {
                   {/* Title */}
                   <h3
                     style={{
-                      fontSize: '24px',
+                      fontSize: windowWidth <= 640 ? '20px' : '24px',
                       fontWeight: 500,
                       color: '#212121',
                       marginBottom: '12px',
@@ -498,10 +507,10 @@ const About = () => {
                   <p
                     style={{
                       color: '#757575',
-                      fontSize: '14px',
+                      fontSize: windowWidth <= 640 ? '13px' : '14px',
                       lineHeight: 1.6,
                       marginBottom: '24px',
-                      minHeight: '72px',
+                      minHeight: windowWidth <= 640 ? 'auto' : '72px',
                     }}
                   >
                     {skill.description}
@@ -584,6 +593,7 @@ const About = () => {
                     setCurrentIndex(index);
                     setIsAutoPlaying(false);
                   }}
+                  aria-label={`Go to slide ${index + 1}`}
                   style={{
                     width: currentIndex === index ? '32px' : '8px',
                     height: '8px',

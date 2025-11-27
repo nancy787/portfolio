@@ -22,7 +22,7 @@ const Portfolio = () => {
     type: 'Portfolio Website',
     techStack: ['React', 'JavaScript', 'Material-ui', 'Responsive Design'],
     status: 'Live',
-    demoLink: '#',
+    demoLink: 'https://portfolio-sigma-sooty-35.vercel.app/',
     gitLink: 'https://github.com/nancy787/portfolio',
     images: [
      portfolioImg, WorkExperienceImg
