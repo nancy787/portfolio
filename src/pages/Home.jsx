@@ -36,7 +36,7 @@ const Home = () => {
 
               <div className="exp-badge">
                 <span>🚀</span>
-                <span className="exp-text">3+ Years Experience</span>
+                <span className="exp-text">4 Years Experience</span>
               </div>
 
 <div className="btn-row">
