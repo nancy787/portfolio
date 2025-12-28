@@ -16,7 +16,7 @@ import {
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
 import DownloadIcon from '@mui/icons-material/Download';
-import MyCV from "../assets/nancy_kumari.pdf";
+import MyCV from "../assets/nancy_kumari_backend_engineer.pdf";
 import {Logo} from '../index'
 import { useNavigate, useLocation } from 'react-router-dom';
 
